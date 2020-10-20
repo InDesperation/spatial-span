@@ -339,7 +339,7 @@ var forward_response_block = {
 
 var reverse_response_block = {
   type: 'single-stim-button',
-  stimulus: response_grid,
+  stimulus: getResponseStims,
   button_class: 'submit_button',
   data: {
     trial_id: "response",
