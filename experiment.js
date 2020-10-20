@@ -65,7 +65,7 @@ var setStims = function() {
     stim_array.push(stim_grid)
     time_array.push(stim_time)
   }
-  console.log(stim_array)
+
   total_time = num_spaces * (stim_time) + 1000
 }
 
@@ -75,6 +75,21 @@ var getTestText = function() {
 
 var getStims = function() {
   return stim_array
+}
+
+var setResponseStims = function(number) {
+  response_grid = '<div class="numbox numbox_'+number+'">'
+  for (var j = 1; j < 26; j++) {
+    response_grid += '<button id = button_' + j +
+        ' class = "click_square" onclick = "recordClick(this)"><div class = content></div></button>'
+  }
+  response_grid +=
+      '<button class = clear_button id = "ClearButton" onclick = "clearResponse()">Очистить</button>' +
+      '<button class = submit_button id = "SubmitButton">Подтвердить</button></div>'
+}
+
+var getResponseStims = function() {
+  return response_grid
 }
 
 var getTimeArray = function() {
@@ -253,6 +268,7 @@ var start_reverse_block = {
   	errors = 0
     num_spaces = 1
     stims = setStims()
+    responseStims = setResponseStims(num_spaces)
   }
 }
 
@@ -282,7 +298,7 @@ var test_block = {
 
 var forward_response_block = {
   type: 'single-stim-button',
-  stimulus: response_grid,
+  stimulus: getResponseStims,
   button_class: 'submit_button',
   data: {
     trial_id: "response",
@@ -301,6 +317,7 @@ var forward_response_block = {
       num_spaces += 1
       feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
+      responseStims = setResponseStims(num_spaces)
       correct = true
     } else {
       errors += 1
@@ -310,6 +327,7 @@ var forward_response_block = {
       }
       feedback = '<span style="color:red">Неверно</span>'
       stims = setStims()
+      responseStims = setResponseStims(num_spaces)
     }
     jsPsych.data.addDataToLastTrial({
       correct: correct
@@ -340,6 +358,7 @@ var reverse_response_block = {
       num_spaces += 1
       feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
+      responseStims = setResponseStims(num_spaces)
       correct = true
     } else {
       errors += 1
@@ -349,6 +368,7 @@ var reverse_response_block = {
       }
       feedback = '<span style="color:red">Неверно</span>'
       stims = setStims()
+      responseStims = setResponseStims(num_spaces)
     }
     jsPsych.data.addDataToLastTrial({
       correct: correct
