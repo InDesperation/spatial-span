@@ -247,7 +247,7 @@ var start_reverse_block = {
     trial_id: "start_reverse_intro"
   },
   timing_response: 180000,
-  text: '<div class = centerbox><p class = block-text>In these next trials, instead of reporting back the sequence you just saw, report the <strong>reverse</strong> of that sequence. So the last item should be first in your response, the second to last should be the second in your response, etc...</p><p class = block-text>Press <strong>enter</strong> to begin.</p></div>',
+  text: '<div class = centerbox><p class = block-text>Теперь тебе надо снова запомнить последовательность появления смайликов, но воспроизвести ее в <strong>обратном</strong> порядке, то есть от последнего к первому.</p><p class = block-text>Нажмите <strong>Enter</strong>, чтобы начать.</p></div>',
   cont_key: [13],
   on_finish: function() {
   	errors = 0
