@@ -16,7 +16,7 @@
     width: 18%;
     height: 18%; /* = width for a 1:1 aspect ratio */
     margin:1%;
-    background-color:#505050;
+    background-color: white;
     overflow:hidden;
     color: #fff;
     border-radius:15px;
@@ -28,9 +28,9 @@
     width: 47%;
     height: 15%; /* = width for a 1:1 aspect ratio */
     margin:1.5%;
-    background-color:#505050;
+    background-color: white;
     overflow:hidden;
-    color: #fff;
+    color: black;
     border-radius:15px;
     font-size: 20px;
 }
@@ -42,11 +42,109 @@
 }
 
 .click_square:hover, .submit_button:hover, .clear_button:hover {
-    background-color: black;
+    background-color: #dedede;
 }
 
 .click_square:active, .submit_button:active, .clear_button:active {
     background-color: red;
+}
+
+.numbox_1 .active_smile {
+    background-image: url("images/smile_1.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_2 .active_smile {
+    background-image: url("images/smile_2.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_3 .active_smile {
+    background-image: url("images/smile_3.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_4 .active_smile {
+    background-image: url("images/smile_4.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_5 .active_smile {
+    background-image: url("images/smile_5.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_6 .active_smile {
+    background-image: url("images/smile_6.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_7 .active_smile {
+    background-image: url("images/smile_7.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_1 .click_square:active {
+    background-image: url("images/smile_1.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_2 .click_square:active {
+    background-image: url("images/smile_2.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_3 .click_square:active {
+    background-image: url("images/smile_3.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_4 .click_square:active {
+    background-image: url("images/smile_4.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_5 .click_square:active {
+    background-image: url("images/smile_5.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_6 .click_square:active {
+    background-image: url("images/smile_6.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.numbox_7 .click_square:active {
+    background-image: url("images/smile_7.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .numbers{

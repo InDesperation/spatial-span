@@ -16,6 +16,11 @@ function evalAttentionChecks() {
   return check_percent
 }
 
+function declOfNum(number, titles) {
+  let cases = [2, 0, 1, 1, 1, 2];
+  return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+}
+
 var getInstructFeedback = function() {
   return '<div class = centerbox><p class = center-block-text>' + feedback_instruct_text +
     '</p></div>'
@@ -45,11 +50,11 @@ var setStims = function() {
   for (var i = 0; i < num_spaces; i++) {
     var space = randomDraw(spaces.filter(function(x) {return x!=last_space}))
     last_space = space
-    stim_grid = '<div class = numbox>'
+    stim_grid = '<div class="numbox numbox_'+num_spaces+'">'
     for (var j = 1; j < 26; j++) {
       if (j == space) {
         stim_grid += '<button id = button_' + j +
-          ' class = "square red" ><div class = content></div></button>'
+          ' class = "square active_smile" ><div class = content></div></button>'
       } else {
         stim_grid += '<button id = button_' + j +
           ' class = "square"><div class = content></div></button>'
@@ -65,7 +70,7 @@ var setStims = function() {
 }
 
 var getTestText = function() {
-  return '<div class = centerbox><div class = center-text>' + num_spaces + ' Squares</p></div>'
+  return '<div class = centerbox><div class = center-text>' + num_spaces + ' ' + declOfNum(num_spaces, ['смайлик', 'смайлика', 'смайликов']) + '</p></div>'
 }
 
 var getStims = function() {
@@ -102,8 +107,8 @@ var sumInstructTime = 0 //ms
 var instructTimeThresh = 0 ///in seconds
 
 // task specific variables
-var num_spaces = 3
-var num_trials = 14
+var num_spaces = 1
+var num_trials = 7
 var curr_seq = []
 var stim_time = 1000
 var time_array = []
@@ -117,14 +122,14 @@ for (var i = 1; i < 26; i++) {
   first_grid += '<button id = button_' + i +
     ' class = "square" onclick = "recordClick(this)"><div class = content></div></button>'
 }
-var response_grid = '<div class = numbox>'
+var response_grid = '<div class="numbox numbox_'+num_spaces+'">'
 for (var i = 1; i < 26; i++) {
   response_grid += '<button id = button_' + i +
     ' class = "click_square" onclick = "recordClick(this)"><div class = content></div></button>'
 }
 response_grid +=
-  '<button class = clear_button id = "ClearButton" onclick = "clearResponse()">Clear</button>' +
-  '<button class = submit_button id = "SubmitButton">Submit Answer</button></div>'
+  '<button class = clear_button id = "ClearButton" onclick = "clearResponse()">Очистить</button>' +
+  '<button class = submit_button id = "SubmitButton">Подтвердить</button></div>'
 setStims()
 var stim_array = getStims()
 
@@ -162,8 +167,7 @@ var post_task_block = {
 };
 
 /* define static blocks */
-var feedback_instruct_text =
-  'Welcome to the experiment. This experiment will take less than 10 minutes. Press <strong>enter</strong> to begin.'
+var feedback_instruct_text = 'Добро пожаловать. Нажмите <strong>Enter</strong>, чтобы начать.';
 var feedback_instruct_block = {
   type: 'poldrack-text',
   cont_key: [13],
@@ -181,7 +185,7 @@ var instructions_block = {
     trial_id: "instruction"
   },
   pages: [
-    '<div class = centerbox><p class = block-text>In this test you will see a grid of squares that will flash red one at a time. You have to remember the order that the squares flashed red. At the end of each trial, enter the sequence into the grid as you saw it presented to you. Do your best to memorize the sequence, but do not write them down or use any other external tool to help you remember them.</p><p class = block-text></p><p class = block-text>Trials will start after you end instructions. </p></div>'
+    '<div class = centerbox><p class = block-text>В этом тесте ты увидишь сетку квадратов, в которых будут появляться смайлики по одному. Твоя задача - запомнить порядок, в котором квадраты менялись на смайлики. Когда смайлики перестанут появляться, нужно будет повторить эту последовательность, нажимая мышкой на квадраты. На новых уровнях тебя ждут новые смайлики.</p></div>'
   ],
   allow_keys: false,
   show_clickable_nav: true,
@@ -247,7 +251,7 @@ var start_reverse_block = {
   cont_key: [13],
   on_finish: function() {
   	errors = 0
-    num_spaces = 3
+    num_spaces = 1
     stims = setStims()
   }
 }
@@ -295,7 +299,7 @@ var forward_response_block = {
       // staircase
     if (arraysEqual(response, curr_seq)) {
       num_spaces += 1
-      feedback = '<span style="color:green">Correct!</span>'
+      feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
       correct = true
     } else {
@@ -304,7 +308,7 @@ var forward_response_block = {
         num_spaces -= 1
         errors = 0
       }
-      feedback = '<span style="color:red">Incorrect</span>'
+      feedback = '<span style="color:red">Неверно</span>'
       stims = setStims()
     }
     jsPsych.data.addDataToLastTrial({
@@ -334,7 +338,7 @@ var reverse_response_block = {
       // staircase
     if (arraysEqual(response.reverse(), curr_seq)) {
       num_spaces += 1
-      feedback = '<span style="color:green">Correct!</span>'
+      feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
       correct = true
     } else {
@@ -343,7 +347,7 @@ var reverse_response_block = {
         num_spaces -= 1
         errors = 0
       }
-      feedback = '<span style="color:red">Incorrect</span>'
+      feedback = '<span style="color:red">Неверно</span>'
       stims = setStims()
     }
     jsPsych.data.addDataToLastTrial({
