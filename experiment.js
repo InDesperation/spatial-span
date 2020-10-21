@@ -123,7 +123,7 @@ var instructTimeThresh = 0 ///in seconds
 
 // task specific variables
 var num_spaces = 1
-var num_trials = 7
+var num_trials = 14
 var curr_seq = []
 var stim_time = 1000
 var time_array = []
@@ -314,7 +314,9 @@ var forward_response_block = {
     var correct = false
       // staircase
     if (arraysEqual(response, curr_seq)) {
-      num_spaces += 1
+      if (num_spaces < 7) {
+        num_spaces += 1
+      }
       feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
       responseStims = setResponseStims(num_spaces)
@@ -355,7 +357,10 @@ var reverse_response_block = {
     var correct = false
       // staircase
     if (arraysEqual(response.reverse(), curr_seq)) {
-      num_spaces += 1
+      if (num_spaces < 7) {
+        num_spaces += 1
+      }
+
       feedback = '<span style="color:green">Верно!</span>'
       stims = setStims()
       responseStims = setResponseStims(num_spaces)
