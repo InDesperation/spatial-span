@@ -123,7 +123,7 @@ var instructTimeThresh = 0 ///in seconds
 
 // task specific variables
 var num_spaces = 1
-var num_trials = 1
+var num_trials = 7
 var curr_seq = []
 var stim_time = 1000
 var time_array = []
