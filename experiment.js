@@ -123,7 +123,7 @@ var instructTimeThresh = 0 ///in seconds
 
 // task specific variables
 var num_spaces = 1
-var num_trials = 7
+var num_trials = 1
 var curr_seq = []
 var stim_time = 1000
 var time_array = []
@@ -378,6 +378,18 @@ var reverse_response_block = {
   timing_post_trial: 500
 }
 
+var outro_test_block = {
+  type: 'poldrack-text',
+  is_html: true,
+  data: {
+    trial_id: "test_outro"
+  },
+  timing_stim: 2000,
+  timing_response: 2000,
+  timing_post_trial: 0,
+  text: '<div class = centerbox><div class="img-container"><img src="images/outro.jpg" alt="Молодец"></div></div>',
+};
+
 var feedback_block = {
   type: 'poldrack-single-stim',
   stimulus: getFeedback,
@@ -409,5 +421,6 @@ for (i = 0; i < num_trials ; i++ ) {
 	spatial_span_experiment.push(reverse_response_block)
 	spatial_span_experiment.push(feedback_block)
 }
+spatial_span_experiment.push(outro_test_block)
 spatial_span_experiment.push(post_task_block)
 spatial_span_experiment.push(end_block)
