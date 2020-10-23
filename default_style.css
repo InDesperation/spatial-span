@@ -59,7 +59,7 @@ body {
 /* Used for general instructions */
 .block-text {
   width:100%;
-  height 100vw;
+  /*height: 100vw;*/
   text-align: justify;
   margin: 0 auto;
   margin-bottom: 1em;
@@ -125,6 +125,14 @@ Sample html: <div class = centerbox><div class = img-container><img...></img></d
   font-size: 0.8em;
 }
 
+.img {
+  display: block;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
 
 /* Used for positioning during instructions */
 

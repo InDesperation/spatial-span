@@ -262,7 +262,7 @@ var start_reverse_block = {
     trial_id: "start_reverse_intro"
   },
   timing_response: 180000,
-  text: '<div class = centerbox><p class = block-text>Теперь тебе надо снова запомнить последовательность появления смайликов, но воспроизвести ее в <strong>обратном</strong> порядке, то есть от последнего к первому.</p><p class = block-text>Нажмите <strong>Enter</strong>, чтобы начать.</p></div>',
+  text: '<div class = centerbox><p class = block-text>Теперь тебе надо снова запомнить последовательность появления смайликов, но воспроизвести ее в <strong>обратном</strong> порядке, то есть от последнего к первому.</p><br><img class="img" src="images/instruction.png" alt="Инструкция"><br><p class="block-text text-center">Нажмите <strong>Enter</strong>, чтобы начать.</p></div>',
   cont_key: [13],
   on_finish: function() {
   	errors = 0
